@@ -9,7 +9,7 @@ import mano from "../assets/img/cidade-alta-mano.webp";
 
 const HeroSection = () => {
   return (
-    <div className="bg-default text-white overflow-y-hidden min-h-screen flex items-center justify-center">
+    <div className="bg-default text-white min-h-screen flex items-center justify-center">
       <video
         className="z-1 h-screen w-full overflow-hidden object-cover opacity-30 brightness-50  grayscale-50 absolute"
         loop
