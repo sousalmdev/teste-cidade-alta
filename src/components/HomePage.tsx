@@ -35,7 +35,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute md:bottom-0 sm:bottom-8 sm:w-auto w-11/12"
+        className="absolute md:bottom-0 sm:bottom-8 bottom-0 sm:w-auto w-11/12"
       />
       <div className="text-center flex flex-col justify-around items-center self-start z-20 p-6">
         <motion.img initial={{ opacity: 0, scale: 0.8 }}
