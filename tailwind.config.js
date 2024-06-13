@@ -5,9 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor:{
+      colors:{
         default:"#171717",
         caYellow:"rgb(255, 192, 70)"
+      },
+      grayscale: {
+        50: '50%',
       }
     },
   },
