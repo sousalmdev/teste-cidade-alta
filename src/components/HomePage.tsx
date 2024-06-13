@@ -15,8 +15,8 @@ const HeroSection = () => {
         loop
         autoPlay
       >
-        <source src={gold} />
-        <source />
+        <source type="video/mp4" src={gold} />
+    
       </video>
       <div className="z-10">
         <img
