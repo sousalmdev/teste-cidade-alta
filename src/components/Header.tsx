@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import HighScoresModal from './HighScoresModal';
-
+import alta from '../assets/img/alta.svg'
 interface HeaderProps {
   highScores: number[];
 }
@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ highScores }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-md p-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold text-gray-800">Seu Jogo</h1>
+      <img src={alta} alt="alta" className='w-20' />
       <div>
         <button
           onClick={toggleScoresModal}
