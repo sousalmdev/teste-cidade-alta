@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Text } from "@chakra-ui/react";
 
 interface TimerProps {
   timeLeft: number;
@@ -6,10 +7,10 @@ interface TimerProps {
 
 const Timer: React.FC<TimerProps> = ({ timeLeft }) => {
   return (
-    <div className="text-lg">
-      Time left: <span className="font-bold">{timeLeft}s</span>
-    </div>
+    <Box>
+      <Text fontSize="2xl">Time Left: {timeLeft}s</Text>
+    </Box>
   );
 };
-export default Timer;
 
+export default Timer;

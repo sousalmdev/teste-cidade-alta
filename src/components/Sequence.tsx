@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from "@chakra-ui/react";
 
 interface SequenceProps {
   sequence: string;
@@ -7,13 +8,24 @@ interface SequenceProps {
 
 const Sequence: React.FC<SequenceProps> = ({ sequence, currentIndex }) => {
   return (
-    <div className="text-xl font-mono text-softYellow">
+    <Box display="flex" justifyContent="center" alignItems="center" flexWrap="wrap" gap={2}>
       {sequence.split('').map((char, index) => (
-        <span key={index} className={index === currentIndex ? 'text-yellow-500' : ''}>
+        <Box
+          key={index}
+          w={12}
+          h={12}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          bg={index < currentIndex ? "green.500" : "gray.700"}
+          color="white"
+          borderRadius="md"
+          fontSize="2xl"
+        >
           {char}
-        </span>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 
