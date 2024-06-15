@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Instructions from './Instructions';
 import Sequence from './Sequence';
 import Timer from './Timer';
 import Feedback from './Feedback';
 import Header from './Header';
+import velho from '../assets/img/83-832000_person-transparent-gta-gta-5-grand-theft-auto.png';
+import { motion } from 'framer-motion';
 
-const generateSequence = (length: number): string => {
+const gerarSequencia = (length: number): string => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   return Array.from(
     { length },
@@ -13,8 +16,22 @@ const generateSequence = (length: number): string => {
   ).join('');
 };
 
+export const selecionarDificuldades = (difficulty: string) => {
+  switch (difficulty) {
+    case "Fácil":
+      return { sequenceLength: 5, timeLimit: 30 };
+    case "Médio":
+      return { sequenceLength: 7, timeLimit: 20 };
+    case "Difícil":
+      return { sequenceLength: 10, timeLimit: 10 };
+    default:
+      return { sequenceLength: 5, timeLimit: 30 };
+  }
+};
+
 const Game: React.FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
+  const [instructionsVisible, setInstructionsVisible] = useState(true);
   const [sequence, setSequence] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
@@ -22,25 +39,23 @@ const Game: React.FC = () => {
   const [feedback, setFeedback] = useState('');
   const [highScores, setHighScores] = useState<number[]>([]);
   const [countdown, setCountdown] = useState(3);
+  const [difficulty, setDifficulty] = useState('Fácil');
+  const [countdownVisible, setCountdownVisible] = useState(true); 
 
-  const startGame = () => {
-    setSequence(generateSequence(5));
+  const applyDifficultySettings = () => {
+    const settings = selecionarDificuldades(difficulty);
+    setSequence(gerarSequencia(settings.sequenceLength));
+    setTimeLeft(settings.timeLimit);
     setCurrentIndex(0);
-    setTimeLeft(30);
     setGameOver(false);
     setFeedback('');
-    setGameStarted(true);
     setCountdown(3);
+    setCountdownVisible(true); 
   };
 
-  const resetGame = () => {
-    setSequence('');
-    setCurrentIndex(0);
-    setTimeLeft(30);
-    setGameOver(false);
-    setFeedback('');
-    setGameStarted(false);
-    setCountdown(3);
+  const startGame = () => {
+    setGameStarted(true);
+    applyDifficultySettings();
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -75,23 +90,24 @@ const Game: React.FC = () => {
   }, [gameOver, gameStarted, currentIndex, sequence]);
 
   useEffect(() => {
-    if (!gameStarted) {
+    if (countdown > 0 && gameStarted) {
       const countdownTimer = setInterval(() => {
-        if (countdown > 0) {
-          setCountdown(countdown - 1);
-        } else {
-          clearInterval(countdownTimer);
-          startGame();
+        setCountdown(countdown - 1);
+        if (countdown === 1) {
+          setSequence(gerarSequencia(selecionarDificuldades(difficulty).sequenceLength));
+          setTimeLeft(selecionarDificuldades(difficulty).timeLimit);
+          setGameOver(false);
+          setFeedback('');
         }
       }, 1000);
 
       return () => clearInterval(countdownTimer);
     }
-  }, [countdown, gameStarted]);
+  }, [countdown, gameStarted, difficulty]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (timeLeft > 0 && !gameOver && gameStarted) {
+      if (timeLeft > 0 && !gameOver && gameStarted && countdown === 0) {
         setTimeLeft(timeLeft - 1);
       } else if (timeLeft === 0) {
         setGameOver(true);
@@ -100,22 +116,60 @@ const Game: React.FC = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft, gameOver, gameStarted]);
+  }, [timeLeft, gameOver, gameStarted, countdown]);
+
+  useEffect(() => {
+    if (gameStarted && countdown === 0) {
+      const countdownFadeOutTimer = setTimeout(() => {
+        setCountdownVisible(false); 
+      }, 500);
+      return () => clearTimeout(countdownFadeOutTimer);
+    }
+  }, [gameStarted, countdown]);
 
   return (
-    <div className="min-h-screen bg-default flex flex-col items-center justify-center">
-      <Header highScores={highScores} />
-      {gameStarted ? (
-        <>
-          <Sequence sequence={sequence} currentIndex={currentIndex} />
-          <Timer timeLeft={timeLeft} />
-          <Feedback message={feedback} />
-          <button onClick={resetGame} className="bg-caYellow text-default px-4 py-2 mt-4">
-            Reiniciar
-          </button>
-        </>
-      ) : (
-        <Instructions onStartGame={startGame} />
+    <div className="min-h-screen bg-gold  bg-cover bg-no-repeat flex flex-col items-center justify-center">
+      <Header sequenceLength={sequence.length} selectedDifficulty={difficulty} highScores={highScores} onSelectDifficulty={setDifficulty} />
+      {instructionsVisible && (
+          <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'> <Instructions onClose={() => setInstructionsVisible(false)} /></div>
+      )}
+      {!instructionsVisible && (
+        <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'> 
+          {gameStarted ? (
+            <>
+              {countdown > 0 ? (
+                <div className="text-5xl text-caYellow bg-black flex items-center animate-fade-in rounded-full justify-center w-20 h-20">{countdown}</div>
+              ) : (
+                <div className='flex flex-col items-center justify-center'>
+                  <Sequence feedback={feedback} sequence={sequence} currentIndex={currentIndex} />
+                  <Timer timeLeft={timeLeft} />
+                  <Feedback message={feedback} />
+                  <button onClick={startGame} className="bg-caYellow text-default rounded-md px-4 py-2 mt-4">
+                    Reiniciar
+                  </button>
+               </div>
+              )}
+            </>
+          ) : (
+            <motion.div
+            initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+           className='p-5 flex flex-col items-center justify-center text-center'>
+            <img src={velho} loading='eager' alt="velho" className="md:w-64 w-56" />
+            <div className="flex flex-col bg-black rounded-md p-5 items-center justify-center">
+              <h1 className="md:text-4xl text-2xl text-white font-normal mb-4">Bem-vindo ao  <span className='font-black text-caYellow'>Caça ao Ouro!</span></h1>
+              <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
+              <button
+                onClick={startGame}
+                className="bg-caYellow w-11/12 font-bold text-default rounded-md px-4 py-2 mt-10 mb-5"
+              >
+                Iniciar Jogo
+              </button>
+            </div>
+            </motion.div>
+          )}
+        </div>
       )}
     </div>
   );

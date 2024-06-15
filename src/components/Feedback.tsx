@@ -6,9 +6,11 @@ interface FeedbackProps {
 }
 
 const Feedback: React.FC<FeedbackProps> = ({ message }) => {
+  const textColor = message.includes("Você ganhou!") || message.includes('Correto!') ? "green.500" : "red.500";
+
   return (
     <Box>
-      <Text fontSize="2xl" color={message === "Correct!" ? "green.500" : "red.500"}>
+      <Text fontSize="2xl" color={textColor}>
         {message}
       </Text>
     </Box>

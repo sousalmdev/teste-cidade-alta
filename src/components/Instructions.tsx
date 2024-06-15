@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Modal,
   ModalOverlay,
@@ -9,13 +9,13 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 interface InstructionsProps {
-  onStartGame: () => void;
+  onClose: () => void;
 }
 
-const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
+const Instructions: React.FC<InstructionsProps> = ({ onClose }) => {
   const [step, setStep] = useState(1);
 
   const handleNext = () => setStep(step + 1);
@@ -26,20 +26,16 @@ const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const handleStartGame = () => {
-    onStartGame();
-  };
-
   const getModalTitle = (step: number) => {
     switch (step) {
       case 1:
-        return 'Como Jogar';
+        return "Como Jogar";
       case 2:
-        return 'Modos de Jogo';
+        return "Modos de Jogo";
       case 3:
-        return 'Recordes';
+        return "Recordes";
       default:
-        return '';
+        return "";
     }
   };
 
@@ -54,11 +50,12 @@ const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-lg lg:text-2xl"
           >
-            O objetivo do jogo é seguir uma sequência solicitada de teclas o mais rápido possível.
-            Você verá uma sequência de letras na tela e deve pressionar as teclas na ordem correta
-            dentro de um tempo limite. Se você pressionar a tecla correta, a próxima tecla da sequência
-            será destacada. Se você pressionar uma tecla errada ou o tempo acabar, o jogo terminará
-            e você será notificado.
+            O objetivo do jogo é seguir uma sequência solicitada de teclas o
+            mais rápido possível. Você verá uma sequência de letras na tela e
+            deve pressionar as teclas na ordem correta dentro de um tempo
+            limite. Se você pressionar a tecla correta, a próxima tecla da
+            sequência será destacada. Se você pressionar uma tecla errada ou o
+            tempo acabar, o jogo terminará e você será notificado.
           </motion.div>
         );
       case 2:
@@ -87,9 +84,10 @@ const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-lg lg:text-2xl"
           >
-            Você pode ver os recordes locais na página de recordes. Os recordes são armazenados
-            localmente no seu navegador e você pode filtrá-los por dificuldade para ver suas melhores
-            pontuações em cada modo de jogo.
+            Você pode ver os recordes locais na página de recordes. Os recordes
+            são armazenados localmente no seu navegador e você pode filtrá-los
+            por dificuldade para ver suas melhores pontuações em cada modo de
+            jogo.
           </motion.div>
         );
       default:
@@ -98,17 +96,17 @@ const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
   };
 
   return (
-    <Modal isCentered isOpen onClose={() => {}}>
+    <Modal isCentered isOpen onClose={onClose}>
       <ModalOverlay />
-      <ModalContent bgColor="white" color="#171717">
+      <ModalContent bgColor="transparent" color="white">
         <ModalHeader>{getModalTitle(step)}</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton color={'rgb(255 192 70)'} />
         <ModalBody>{getModalBody(step, sectionVariants)}</ModalBody>
         <ModalFooter>
           {step > 1 && (
             <Button
-              bg={'#171717'}
-              color={'rgb(255 192 70)'}
+              bg={"#171717"}
+              color={"rgb(255 192 70)"}
               mr={3}
               onClick={handlePrevious}
             >
@@ -117,19 +115,19 @@ const Instructions: React.FC<InstructionsProps> = ({ onStartGame }) => {
           )}
           {step < 3 ? (
             <Button
-              bg={'#171717'}
-              color={'rgb(255 192 70)'}
+              bg={"#171717"}
+              color={"rgb(255 192 70)"}
               onClick={handleNext}
             >
               Próximo
             </Button>
           ) : (
             <Button
-              onClick={handleStartGame}
-              bg={'#171717'}
-              color={'rgb(255 192 70)'}
+              onClick={onClose}
+              bg={"#171717"}
+              color={"rgb(255 192 70)"}
             >
-              Jogar
+              Fechar
             </Button>
           )}
         </ModalFooter>

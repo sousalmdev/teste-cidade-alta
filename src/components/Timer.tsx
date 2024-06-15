@@ -8,7 +8,7 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ timeLeft }) => {
   return (
     <Box>
-      <Text fontSize="2xl">Time Left: {timeLeft}s</Text>
+      <Text fontSize="3xl" className='my-5 text-caYellow'>Tempo Restante: {timeLeft}s</Text>
     </Box>
   );
 };

@@ -5,14 +5,23 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        default:"#171717",
-        caYellow:"rgb(255, 192, 70)"
+      backgroundImage:{
+        gold:'url(assets/img/gold.jpg)'
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', scale:0  },
+          '100%': { opacity: '1',scale:1 },
+        },
+      },
+      colors: {
+        default: "#171717",
+        caYellow: "rgb(255, 192, 70)",
       },
       grayscale: {
         50: '50%',
-      }
+      },
     },
   },
   plugins: [],
-}
+};
