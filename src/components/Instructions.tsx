@@ -54,8 +54,7 @@ const Instructions: React.FC<InstructionsProps> = ({ onClose }) => {
             mais rápido possível. Você verá uma sequência de letras na tela e
             deve pressionar as teclas na ordem correta dentro de um tempo
             limite. Se você pressionar a tecla correta, a próxima tecla da
-            sequência será destacada. Se você pressionar uma tecla errada ou o
-            tempo acabar, o jogo terminará e você será notificado.
+            sequência será destacada.
           </motion.div>
         );
       case 2:
@@ -101,7 +100,7 @@ const Instructions: React.FC<InstructionsProps> = ({ onClose }) => {
       <ModalContent bgColor="transparent" color="white">
         <ModalHeader>{getModalTitle(step)}</ModalHeader>
         <ModalCloseButton color={'rgb(255 192 70)'} />
-        <ModalBody>{getModalBody(step, sectionVariants)}</ModalBody>
+        <ModalBody fontSize={{base:'small',sm:'medium'}}>{getModalBody(step, sectionVariants)}</ModalBody>
         <ModalFooter>
           {step > 1 && (
             <Button

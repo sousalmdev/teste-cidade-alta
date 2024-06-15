@@ -44,7 +44,7 @@ const CharacterBox = styled(Box)<{ isCorrect: boolean; isIncorrect: boolean }>`
 const Sequence: React.FC<SequenceProps> = ({ sequence, currentIndex, feedback }) => {
   return (
     <div className="flex flex-col items-center">
-      <img src={franklin} loading="eager" alt="franklin" className="md:w-72 w-64" />
+      <img src={franklin} loading="eager" alt="franklin" className="md:w-72  w-6/12" />
       <Box
         display="flex"
         justifyContent="center"

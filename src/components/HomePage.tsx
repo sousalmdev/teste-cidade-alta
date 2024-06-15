@@ -12,7 +12,7 @@ const HeroSection = () => {
       <img
       src={alta}
       alt="alta"
-        className="z-1 h-screen w-full animate-pulse overflow-hidden object-cover opacity-90 brightness-50   absolute"
+        className="z-1 h-screen w-full animate-pulse overflow-hidden object-cover opacity-20 brightness-50   absolute"
       />
     
      
@@ -36,10 +36,10 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 1.2 }}
           src={alta}
           alt="alta"
-          className="w-16 mb-3 "
+          className="sm:w-16 w-10 mb-3 "
         />
         <motion.h1
-          className="sm:text-5xl text-3xl font-bold mb-4"
+          className="sm:text-5xl text-2xl font-bold mb-4"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -62,7 +62,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className=" xl:w-1/4 md:w-2/4  sm:w-8/12 w-full"
+        className=" xl:w-1/4 md:w-2/4  sm:w-8/12 w-8/12"
       />
       <motion.a
             className="px-6 py-4 z-50 sm:text-3xl shadow-md xl:w-4/12 md:w-6/12 sm:w-8/12 w-11/12 text-center md:bg-caYellow tracking-widest md:text-black bg-default text-caYellow font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all"

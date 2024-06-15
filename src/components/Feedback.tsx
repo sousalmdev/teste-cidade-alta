@@ -10,7 +10,7 @@ const Feedback: React.FC<FeedbackProps> = ({ message }) => {
 
   return (
     <Box>
-      <Text fontSize="2xl" color={textColor}>
+      <Text fontSize="sm:2xl" color={textColor}>
         {message}
       </Text>
     </Box>

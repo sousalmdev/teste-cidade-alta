@@ -140,7 +140,7 @@ const Game: React.FC = () => {
               {countdown > 0 ? (
                 <div className="text-5xl text-caYellow bg-black flex items-center animate-fade-in rounded-full justify-center w-20 h-20">{countdown}</div>
               ) : (
-                <div className='flex flex-col items-center justify-center'>
+                <div className='flex flex-col items-center text-center justify-center'>
                   <Sequence feedback={feedback} sequence={sequence} currentIndex={currentIndex} />
                   <Timer timeLeft={timeLeft} />
                   <Feedback message={feedback} />
@@ -156,7 +156,7 @@ const Game: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
            className='p-5 flex flex-col items-center justify-center text-center'>
-            <img src={velho} loading='eager' alt="velho" className="md:w-64 w-56" />
+            <img src={velho} loading='eager' alt="velho" className="md:w-64  w-6/12" />
             <div className="flex flex-col bg-black rounded-md p-5 items-center justify-center">
               <h1 className="md:text-4xl text-2xl text-white font-normal mb-4">Bem-vindo ao  <span className='font-black text-caYellow'>Caça ao Ouro!</span></h1>
               <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
