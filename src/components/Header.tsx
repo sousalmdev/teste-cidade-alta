@@ -7,7 +7,7 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import {BiDownArrowAlt, BiMedal,BiGear} from 'react-icons/bi';
+import {BiDownArrowAlt, BiMedal,BiSolidJoystick} from 'react-icons/bi';
 import HighScoresModal from "./HighScoresModal";
 import alta from "../assets/img/alta.svg";
 import DifficultySelector from "./DifficultySelector";
@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({
             _hover={{ bg: "none" }}
             _expanded={{ bg: "none" }}
             _focus={{ boxShadow: "none" }}
-            rightIcon={<BiGear/>}
+            rightIcon={<BiSolidJoystick/>}
           >
             Opções de Jogo
           </MenuButton>
