@@ -28,7 +28,7 @@ Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma se
 4. **Vencer ou Perder**: Complete a sequência dentro do tempo limite para vencer. Se o tempo acabar ou pressionar a tecla errada, você perde.
 5. **Recordes**: Veja seus melhores tempos no botão de recordes.
 
-##File Tree
+## File Tree
 
 ```bash
 src/
