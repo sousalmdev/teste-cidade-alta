@@ -7,7 +7,7 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import {BiDownArrowAlt, BiMedal} from 'react-icons/bi';
+import {BiDownArrowAlt, BiMedal,BiGear} from 'react-icons/bi';
 import HighScoresModal from "./HighScoresModal";
 import alta from "../assets/img/alta.svg";
 import DifficultySelector from "./DifficultySelector";
@@ -40,14 +40,14 @@ const Header: React.FC<HeaderProps> = ({
         <Menu>
           <MenuButton
             as={Button}
-            bg="rgb(255 192 70)"
-            color="white"
-            _hover={{ bg: "gray.800" }}
-            _expanded={{ bg: "gray.800" }}
+            bg="transparent"
+            color="rgb(255 192 70)"
+            _hover={{ bg: "none" }}
+            _expanded={{ bg: "none" }}
             _focus={{ boxShadow: "none" }}
-            rightIcon={<BiDownArrowAlt/>}
+            rightIcon={<BiGear/>}
           >
-            Menu
+            Opções de Jogo
           </MenuButton>
           <MenuList bg="black" padding={'5px'}  color="rgb(255 192 70)">
             <MenuItem icon={<BiMedal className="text-xl"/>} backgroundColor={'transparent'} onClick={toggleScoresModal}>
