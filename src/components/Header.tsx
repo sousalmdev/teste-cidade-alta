@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="w-11/12 flex items-center justify-center">
         <a href="/">
-          <Image src={alta} alt="alta" boxSize="4rem" />
+          <Image src={alta} alt="alta" boxSize="3rem" />
         </a>
       </div>
     </header>
