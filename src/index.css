@@ -7,5 +7,5 @@ html {
   }
 
 .alta-btn{
-@apply px-6 py-4 z-50 sm:text-3xl shadow-md xl:w-4/12 md:w-6/12 sm:w-8/12 w-11/12 text-center md:bg-caYellow tracking-widest md:text-black bg-default text-caYellow font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all
+@apply px-6 py-4 z-50 sm:text-3xl shadow-md xl:w-4/12 md:w-6/12 sm:w-8/12 w-11/12 text-center tracking-widest  bg-caYellow text-default font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all
 }
