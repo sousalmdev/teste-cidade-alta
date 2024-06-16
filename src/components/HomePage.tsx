@@ -65,7 +65,7 @@ const HeroSection = () => {
         className=" xl:w-1/4 md:w-2/4  sm:w-8/12 w-8/12"
       />
       <motion.a
-            className="px-6 py-4 z-50 sm:text-3xl shadow-md xl:w-4/12 md:w-6/12 sm:w-8/12 w-11/12 text-center md:bg-caYellow tracking-widest md:text-black bg-default text-caYellow font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all"
+            className="alta-btn"
             href="/game"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
