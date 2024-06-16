@@ -5,17 +5,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage:{
-        gold:'url(assets/img/gold.jpg)'
+      backgroundImage: {
+        gold: 'url(assets/img/gold.jpg)',
       },
       keyframes: {
         'fade-in': {
-          '0%': { opacity: '0'},
-          '100%': { opacity: '1'},
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        animations: {
-          'fade-in' : 'fade-in 1s infinite ease'
-          }
+      },
+      animation: {
+        'fade-in': 'fade-in 1s infinite ease',
       },
       colors: {
         default: "#171717",
