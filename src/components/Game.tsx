@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import Instructions from './Instructions';
 import Sequence from './Sequence';
 import Timer from './Timer';
@@ -41,6 +41,8 @@ const Game: React.FC = () => {
   const [countdown, setCountdown] = useState(3);
   const [difficulty, setDifficulty] = useState('Fácil');
   const [countdownVisible, setCountdownVisible] = useState(true); 
+  const inputRef = useRef<HTMLInputElement>(null);
+
 
   const applyDifficultySettings = () => {
     const settings = selecionarDificuldades(difficulty);
@@ -147,6 +149,16 @@ const Game: React.FC = () => {
                   <button onClick={startGame} className="alta-btn mt-4">
                     Reiniciar
                   </button>
+                 <input
+                    ref={inputRef}
+                    type="text"
+                    className="opacity-0 absolute"
+                    onChange={handleKeyPress}
+                    autoComplete="off"
+                    spellCheck="false"
+                    autoFocus
+                  />
+
                </div>
               )}
             </>
