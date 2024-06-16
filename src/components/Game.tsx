@@ -90,7 +90,7 @@ const Game: React.FC = () => {
   }, [gameOver, gameStarted, currentIndex, sequence]);
 
   useEffect(() => {
-    if (countdown > 0 && gameStarted) {
+    if (countdown > 1 && gameStarted) {
       const countdownTimer = setInterval(() => {
         setCountdown(countdown - 1);
         if (countdown === 1) {
@@ -99,7 +99,7 @@ const Game: React.FC = () => {
           setGameOver(false);
           setFeedback('');
         }
-      }, 1000);
+      }, 500);
 
       return () => clearInterval(countdownTimer);
     }
