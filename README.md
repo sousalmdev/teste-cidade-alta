@@ -43,4 +43,5 @@ Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma se
    npm install ;
    npm start
    ```
+3. Divirta-se! 🏆💰
    
