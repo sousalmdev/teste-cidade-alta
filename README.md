@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Caça ao Ouro - Cidade Alta
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma sequência de teclas solicitadas o mais rápido possível. O jogador deve pressionar as teclas na ordem correta dentro de um tempo limite de vinte segundos para ganhar.
 
-In the project directory, you can run:
+## Tecnologias Utilizadas
 
-### `npm start`
+- **React com Typescript**: Biblioteca JavaScript para construção da interface de usuário, reforçada pela segurança da tipagem do Typescript.
+- **Chakra UI**: Biblioteca de componentes para React que facilita a criação de interfaces acessíveis.
+- **Framer Motion**: Biblioteca para animações em React.
+- **use-sound**: Hook para tocar sons no React.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Funcionalidades
 
-### `npm test`
+- **Sequência de teclas**: Gera uma sequência aleatória de dez letras que o jogador deve seguir.
+- **Temporizador regressivo**: Um temporizador que conta regressivamente o tempo disponível para o jogador completar a sequência, que é vinte segundos.
+- **Feedback sonoro**: Sons de vitória e derrota são reproduzidos dependendo do resultado do jogo.
+- **Modais de feedback**: Modais que informam ao jogador se ele ganhou ou perdeu.
+- **Sistema de recordes**: Armazena e exibe os melhores tempos do jogador localmente.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Como Jogar
 
-### `npm run build`
+1. **Iniciar o Jogo**: Pressione o botão "Iniciar Jogo" para começar.
+2. **Sequência de Teclas**: Pressione as teclas na sequência correta conforme elas aparecem na tela.
+3. **Feedback Imediato**: Receba feedback instantâneo ao pressionar cada tecla.
+4. **Vencer ou Perder**: Complete a sequência dentro do tempo limite para vencer. Se o tempo acabar ou pressionar a tecla errada, você perde.
+5. **Recordes**: Veja seus melhores tempos no botão de recordes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/sousalmdev/ca-minigame
+   cd ca-minigame
