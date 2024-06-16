@@ -122,7 +122,7 @@ const Game: React.FC = () => {
     if (gameStarted && countdown === 0) {
       const countdownFadeOutTimer = setTimeout(() => {
         setCountdownVisible(false); 
-      }, 500);
+      }, 1000);
       return () => clearTimeout(countdownFadeOutTimer);
     }
   }, [gameStarted, countdown]);
