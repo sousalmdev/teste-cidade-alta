@@ -62,7 +62,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className=" xl:w-1/4 md:w-2/4  sm:w-8/12 w-8/12"
+        className="img-mano"
       />
       <motion.a
             className="alta-btn"
