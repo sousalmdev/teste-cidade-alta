@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Instructions from './Instructions';
 import Sequence from './Sequence';
 import Timer from './Timer';
@@ -40,7 +40,8 @@ const Game: React.FC = () => {
   const [highScores, setHighScores] = useState<number[]>([]);
   const [countdown, setCountdown] = useState(3);
   const [difficulty, setDifficulty] = useState('Fácil');
-  const [countdownVisible, setCountdownVisible] = useState(true); 
+  const [countdownVisible, setCountdownVisible] = useState(true);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const applyDifficultySettings = () => {
     const settings = selecionarDificuldades(difficulty);
@@ -50,18 +51,19 @@ const Game: React.FC = () => {
     setGameOver(false);
     setFeedback('');
     setCountdown(3);
-    setCountdownVisible(true); 
+    setCountdownVisible(true);
   };
 
   const startGame = () => {
     setGameStarted(true);
     applyDifficultySettings();
+    inputRef.current?.focus();
   };
 
-  const handleKeyPress = (event: KeyboardEvent) => {
+  const handleKeyPress = (event: KeyboardEvent | React.ChangeEvent<HTMLInputElement>) => {
     if (gameOver || !gameStarted) return;
 
-    const key = event.key.toUpperCase();
+    const key = event instanceof KeyboardEvent ? event.key.toUpperCase() : event.target.value.toUpperCase();
     if (key === sequence[currentIndex]) {
       setCurrentIndex(currentIndex + 1);
       setFeedback('Correto!');
@@ -79,6 +81,10 @@ const Game: React.FC = () => {
     } else {
       setGameOver(true);
       setFeedback('Tecla errada!');
+    }
+
+    if (event instanceof React.ChangeEvent) {
+      event.target.value = '';
     }
   };
 
@@ -99,7 +105,7 @@ const Game: React.FC = () => {
           setGameOver(false);
           setFeedback('');
         }
-      },1000);
+      }, 1000);
 
       return () => clearInterval(countdownTimer);
     }
@@ -121,20 +127,22 @@ const Game: React.FC = () => {
   useEffect(() => {
     if (gameStarted && countdown === 0) {
       const countdownFadeOutTimer = setTimeout(() => {
-        setCountdownVisible(false); 
+        setCountdownVisible(false);
       }, 1000);
       return () => clearTimeout(countdownFadeOutTimer);
     }
   }, [gameStarted, countdown]);
 
   return (
-    <div className="min-h-screen bg-gold  bg-cover bg-no-repeat flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gold bg-cover bg-no-repeat flex flex-col items-center justify-center">
       <Header sequenceLength={sequence.length} selectedDifficulty={difficulty} highScores={highScores} onSelectDifficulty={setDifficulty} />
       {instructionsVisible && (
-          <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'> <Instructions onClose={() => setInstructionsVisible(false)} /></div>
+        <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'>
+          <Instructions onClose={() => setInstructionsVisible(false)} />
+        </div>
       )}
       {!instructionsVisible && (
-        <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'> 
+        <div className='w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-black/30 from-0% to-80% to-black backdrop-blur-sm'>
           {gameStarted ? (
             <>
               {countdown > 0 ? (
@@ -147,26 +155,35 @@ const Game: React.FC = () => {
                   <button onClick={startGame} className="alta-btn mt-4">
                     Reiniciar
                   </button>
-               </div>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="opacity-0 absolute"
+                    onChange={handleKeyPress}
+                    autoComplete="off"
+                    spellCheck="false"
+                    autoFocus
+                  />
+                </div>
               )}
             </>
           ) : (
             <motion.div
-            initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-           className='p-5 flex flex-col items-center justify-center text-center'>
-            <img src={velho} loading='eager' alt="velho" className="md:w-64  w-6/12" />
-            <div className="flex flex-col bg-black rounded-md p-5 items-center justify-center">
-              <h1 className="md:text-4xl text-2xl text-white font-normal mb-4">Bem-vindo ao  <span className='font-black text-caYellow'>Caça ao Ouro!</span></h1>
-              <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
-              <button
-                onClick={startGame}
-                className="alta-btn mt-4"
-              >
-                Iniciar Jogo
-              </button>
-            </div>
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className='p-5 flex flex-col items-center justify-center text-center'>
+              <img src={velho} loading='eager' alt="velho" className="md:w-64 w-6/12" />
+              <div className="flex flex-col bg-black rounded-md p-5 items-center justify-center">
+                <h1 className="md:text-4xl text-2xl text-white font-normal mb-4">Bem-vindo ao <span className='font-black text-caYellow'>Caça ao Ouro!</span></h1>
+                <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
+                <button
+                  onClick={startGame}
+                  className="alta-btn mt-4"
+                >
+                  Iniciar Jogo
+                </button>
+              </div>
             </motion.div>
           )}
         </div>
