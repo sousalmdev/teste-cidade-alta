@@ -138,7 +138,7 @@ const Game: React.FC = () => {
           {gameStarted ? (
             <>
               {countdown > 0 ? (
-                <div className="text-5xl text-default bg-caYellow flex items-center animate-ping rounded-full justify-center w-20 h-20">{countdown}</div>
+                <div className="text-5xl text-default bg-caYellow flex items-center animate-fade-in rounded-full justify-center w-20 h-20">{countdown}</div>
               ) : (
                 <div className='flex flex-col items-center text-center justify-center'>
                   <Sequence feedback={feedback} sequence={sequence} currentIndex={currentIndex} />
