@@ -1,21 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-
 import triangle1 from "../assets/img/Polygon 1.png";
 import triangle2 from "../assets/img/Polygon 3.png";
 import alta from "../assets/img/alta.svg";
 import mano from "../assets/img/cidade-alta-mano.png";
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   return (
     <div className="bg-default text-white  min-h-screen flex items-center justify-center">
       <img
-      src={alta}
-      alt="alta"
+        src={alta}
+        alt="alta"
         className="z-1 h-screen w-full animate-pulse overflow-hidden object-cover opacity-20 brightness-50   absolute"
       />
-    
-     
+
       <div className="z-10">
         <img
           src={triangle1}
@@ -57,14 +55,14 @@ const HeroSection = () => {
       </div>
       <div className="min-h-screen   z-20 absolute w-full flex items-center justify-center">
         <div className="flex flex-col w-full items-center justify-center">
-        <motion.img
-        src={mano}
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="img-mano"
-      />
-      <motion.a
+          <motion.img
+            src={mano}
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="img-mano"
+          />
+          <motion.a
             className="alta-btn"
             href="/game"
             initial={{ opacity: 0, scale: 0.8 }}

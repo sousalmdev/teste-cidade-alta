@@ -12,3 +12,12 @@ html {
 .img-mano{
 @apply xl:w-1/4 md:w-2/4  sm:w-8/12 w-8/12;
 }
+.alta-btn2{
+  @apply px-6 py-4 z-50 sm:text-3xl shadow-md   sm:w-10/12 w-11/12 text-center tracking-widest  bg-caYellow text-default font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all;
+  }
+  .alta-btn3{
+    @apply px-6 py-4 z-50 sm:text-3xl shadow-md  w-full text-center tracking-widest  bg-caYellow text-default font-black text-lg  rounded-md hover:bg-default hover:text-caYellow transition-all;
+    }
+    .header{
+      @apply fixed top-0 z-50 flex items-center justify-center left-0 right-0 bg-black shadow-md p-4
+    }

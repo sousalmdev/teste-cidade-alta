@@ -14,9 +14,9 @@ module.exports = {
           '100%': { opacity: '1' },
         },
         bounce: {
-          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
-          '40%': { transform: 'translateY(-10px)' },
-          '60%': { transform: 'translateY(-5px)' },
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+          '100%': { transform: 'translateY(0px)' },
         },
         shake: {
           '0%': { transform: 'translate(1px, 1px) rotate(0deg)' },
@@ -34,8 +34,8 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fade-in 1s infinite ease',
-        bounce: 'bounce 2s infinite',
-        shake: 'shake 1s infinite',
+        bounce: 'bounce .1s linear',
+        shake: 'shake 1s linear',
       },
       colors: {
         default: "#171717",
