@@ -99,7 +99,7 @@ const Game: React.FC = () => {
           setGameOver(false);
           setFeedback('');
         }
-      },500);
+      },1000);
 
       return () => clearInterval(countdownTimer);
     }
@@ -144,7 +144,7 @@ const Game: React.FC = () => {
                   <Sequence feedback={feedback} sequence={sequence} currentIndex={currentIndex} />
                   <Timer timeLeft={timeLeft} />
                   <Feedback message={feedback} />
-                  <button onClick={startGame} className="bg-caYellow text-default rounded-md px-4 py-2 mt-4 w-11/12">
+                  <button onClick={startGame} className="alta-btn">
                     Reiniciar
                   </button>
                </div>
@@ -162,7 +162,7 @@ const Game: React.FC = () => {
               <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
               <button
                 onClick={startGame}
-                className="bg-caYellow w-11/12 font-bold text-default rounded-md px-4 py-2 mt-10 mb-5"
+                className="alta-btn"
               >
                 Iniciar Jogo
               </button>
