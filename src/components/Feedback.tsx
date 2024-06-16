@@ -55,6 +55,7 @@ const Feedback: React.FC<FeedbackProps> = ({ message }) => {
       <Modal
         isCentered
         isOpen={ganhouModalOpen}
+        size={"sm"}
         onClose={() => setGanhouModalOpen(false)}
       >
         <ModalOverlay />
@@ -94,6 +95,7 @@ const Feedback: React.FC<FeedbackProps> = ({ message }) => {
 
       <Modal
         isCentered
+        size={"sm"}
         isOpen={perdeuModalOpen}
         onClose={() => setPerdeuModalOpen(false)}
       >
