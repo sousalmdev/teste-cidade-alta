@@ -144,7 +144,7 @@ const Game: React.FC = () => {
                   <Sequence feedback={feedback} sequence={sequence} currentIndex={currentIndex} />
                   <Timer timeLeft={timeLeft} />
                   <Feedback message={feedback} />
-                  <button onClick={startGame} className="alta-btn">
+                  <button onClick={startGame} className="alta-btn mt-4">
                     Reiniciar
                   </button>
                </div>
@@ -162,7 +162,7 @@ const Game: React.FC = () => {
               <p className="text-white md:text-2xl text-base">Pressione o botão abaixo para começar.</p>
               <button
                 onClick={startGame}
-                className="alta-btn"
+                className="alta-btn mt-4"
               >
                 Iniciar Jogo
               </button>
