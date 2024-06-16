@@ -99,7 +99,7 @@ const Game: React.FC = () => {
           setGameOver(false);
           setFeedback('');
         }
-      },3000);
+      },500);
 
       return () => clearInterval(countdownTimer);
     }
