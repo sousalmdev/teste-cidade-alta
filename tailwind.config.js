@@ -13,6 +13,9 @@ module.exports = {
           '0%': { opacity: '0'},
           '100%': { opacity: '1'},
         },
+        animations: {
+          'fade-in' : 'fade-in 1s infinite ease'
+          }
       },
       colors: {
         default: "#171717",
