@@ -45,9 +45,9 @@ const Header: React.FC<HeaderProps> = ({
             _hover={{ bg: "none" }}
             _expanded={{ bg: "none" }}
             _focus={{ boxShadow: "none" }}
-            rightIcon={<BiSolidJoystick/>}
+            rightIcon={<BiSolidJoystick className="text-xl"/>}
           >
-            Opções de Jogo
+            Opções
           </MenuButton>
           <MenuList bg="black" padding={'5px'}  color="rgb(255 192 70)">
             <MenuItem icon={<BiMedal className="text-xl"/>} backgroundColor={'transparent'} onClick={toggleScoresModal}>
