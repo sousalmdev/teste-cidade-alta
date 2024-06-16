@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import franklin from '../assets/img/franklin.png';
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 interface SequenceProps {
@@ -10,41 +9,17 @@ interface SequenceProps {
   feedback: string;
 }
 
-const bounce = keyframes`
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-`;
-
-const shake = keyframes`
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-2deg); }
-  20% { transform: translate(-3px, 0px) rotate(2deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(2deg); }
-  50% { transform: translate(-1px, 2px) rotate(-2deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-2deg); }
-  80% { transform: translate(-1px, -1px) rotate(2deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-2deg); }
-`;
-
 const CharacterBox = styled(Box)<{ isCorrect: boolean; isIncorrect: boolean }>`
-  ${(props) => props.isCorrect && `animation: ${bounce} 0.3s linear;`}
-  ${(props) => props.isIncorrect && `animation: ${shake} 0.3s linear;`}
+  ${(props) => props.isCorrect && `animation: bounce 0.3s linear;`}
+  ${(props) => props.isIncorrect && `animation: shake 0.3s linear;`}
 `;
 
 const Sequence: React.FC<SequenceProps> = ({ sequence, currentIndex, feedback }) => {
+  const isAnyIncorrect = feedback === 'Tecla errada!';
+  
   return (
     <div className="flex flex-col items-center">
-      <img src={franklin} loading="eager" alt="franklin" className="md:w-72  w-6/12" />
+      <img src={franklin} loading="eager" alt="franklin" className="md:w-72 w-6/12" />
       <Box
         display="flex"
         justifyContent="center"
@@ -54,6 +29,7 @@ const Sequence: React.FC<SequenceProps> = ({ sequence, currentIndex, feedback })
         alignItems="center"
         flexWrap="wrap"
         gap={2}
+        className={isAnyIncorrect ? 'animate-shake' : ''}
       >
         {sequence.split("").map((char, index) => (
           <CharacterBox
@@ -69,7 +45,8 @@ const Sequence: React.FC<SequenceProps> = ({ sequence, currentIndex, feedback })
             color="white"
             borderRadius="md"
             fontSize="xl"
-            boxShadow={'2px 3px  rgb(255 255 255 / 0.7)'}
+            boxShadow={'2px 3px rgb(255 255 255 / 0.7)'}
+            className={index === currentIndex - 1 && feedback === 'Correto!' ? 'animate-bounce' : ''}
           >
             {char}
           </CharacterBox>
