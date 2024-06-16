@@ -10,8 +10,8 @@ module.exports = {
       },
       keyframes: {
         'fade-in': {
-          '0%': { opacity: '0', scale:0  },
-          '100%': { opacity: '1',scale:1 },
+          '0%': { opacity: '0'},
+          '100%': { opacity: '1'},
         },
       },
       colors: {
