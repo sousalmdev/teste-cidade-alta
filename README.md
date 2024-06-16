@@ -32,5 +32,17 @@ Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma se
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/sousalmdev/ca-minigame
+   git clone https://github.com/sousalmdev/teste-cidade-alta
    cd ca-minigame
+```
+
+2. Instale as Dependências:
+   ```bash 
+   npm install
+```
+
+3. Visualize a aplicação:
+   ```bash 
+   npm start
+   ```
+   
