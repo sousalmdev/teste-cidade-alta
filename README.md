@@ -36,13 +36,11 @@ Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma se
    cd ca-minigame
 ```
 
-2. Instale as Dependências:
-   ```bash 
-   npm install
 ```
 
-3. Visualize a aplicação:
+2. Instale Dependências e Visualize a aplicação:
    ```bash 
+   npm install ;
    npm start
    ```
    
