@@ -9,7 +9,8 @@ Caça ao Ouro é um jogo de reação e memória onde o objetivo é seguir uma se
 - **React com Typescript**: Biblioteca JavaScript para construção da interface de usuário, reforçada pela segurança da tipagem do Typescript.
 - **Chakra UI**: Biblioteca de componentes para React que facilita a criação de interfaces acessíveis.
 - **Framer Motion**: Biblioteca para animações em React.
-- **use-sound**: Hook para tocar sons no React.
+- **use-sound**: Hook personalizada para tocar sons no React.
+- **React-Router-DOM**: Biblioteca para roteamento entre páginas no React.
 
 
 ## Funcionalidades
