@@ -74,6 +74,6 @@ src/
    npm start
    ```
 
-3. Divirta-se! 🏆💰
+## Divirta-se! 🏆💰
 
    
