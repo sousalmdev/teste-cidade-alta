@@ -18,8 +18,8 @@ import { BiMedal } from "react-icons/bi";
 import velho from "../assets/img/83-832000_person-transparent-gta-gta-5-grand-theft-auto.png";
 import { motion } from "framer-motion";
 
-const SEQUENCE_LENGTH = 10; // Número de caracteres da sequência
-const TIME_LIMIT = 20; // Tempo limite em segundos
+const SEQUENCE_LENGTH = 10; 
+const TIME_LIMIT = 20; 
 
 const gerarSequencia = (length: number): string => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
